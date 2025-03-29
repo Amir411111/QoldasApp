@@ -10,7 +10,6 @@ dependencies:
     sdk: flutter
   intl: ^0.20.2
   flutter_colorpicker: ^1.1.0
-  calendar_view: ^1.4.0
   flutter_dotenv: ^5.2.1
   path: ^1.8.3
   calendar_view: ^1.4.0
