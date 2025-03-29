@@ -2,6 +2,7 @@ import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 
 import '../pages/event_details_page.dart';
+import '../pages/day_view_page.dart'; // Импортируем DayViewPageDemo
 
 class MonthViewWidget extends StatelessWidget {
   final GlobalKey<MonthViewState>? state;
@@ -21,6 +22,13 @@ class MonthViewWidget extends StatelessWidget {
       showWeekends: true,
       startDay: WeekDays.friday,
       useAvailableVerticalSpace: true,
+      onCellTap: (date, events) {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => DayViewPageDemo(),
+          ),
+        );
+      },
       onEventTap: (event, date) {
         Navigator.of(context).push(
           MaterialPageRoute(

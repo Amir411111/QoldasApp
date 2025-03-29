@@ -24,16 +24,10 @@ class _MonthViewPageDemoState extends State<MonthViewPageDemo> {
         selectedView: CalendarView.month,
       ),
       mobileWidget: Scaffold(
-        floatingActionButton: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            FloatingActionButton(
-              child: Icon(Icons.add),
-              elevation: 8,
-              onPressed: () => context.pushRoute(CreateEventPage()),
-            ),
-            SizedBox(height: 16),
-          ],
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          elevation: 8,
+          onPressed: () => context.pushRoute(CreateEventPage()),
         ),
         body: MonthViewWidget(),
       ),
