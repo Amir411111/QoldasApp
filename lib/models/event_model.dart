@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:groq/groq.dart';
 import 'dart:convert';
 
 class Event {
@@ -62,13 +61,13 @@ class _CalendarChatScreenState extends State<CalendarChatScreen> {
   Future<void> _processUserInput(String userInput) async {
     _groq.setCustomInstructionsWith(
         "Ты помощник, который преобразует пользовательские запросы в события календаря. "
-            "Если время окончания не указано, предполагается, что событие длится 1 час. "
-            "Ответь в формате JSON, соответствующем структуре класса Event."
-    );
+        "Если время окончания не указано, предполагается, что событие длится 1 час. "
+        "Ответь в формате JSON, соответствующем структуре класса Event.");
 
     try {
       GroqResponse response = await _groq.sendMessage(userInput);
-      final Map<String, dynamic> eventData = jsonDecode(response.choices.first.message.content);
+      final Map<String, dynamic> eventData =
+          jsonDecode(response.choices.first.message.content);
       Event newEvent = Event.fromJson(eventData);
 
       setState(() {
@@ -91,7 +90,8 @@ class _CalendarChatScreenState extends State<CalendarChatScreen> {
               itemBuilder: (context, index) {
                 final event = _events[index];
                 return ListTile(
-                  title: Text("${event.title} - ${event.startTime} до ${event.endTime}"),
+                  title: Text(
+                      "${event.title} - ${event.startTime} до ${event.endTime}"),
                   subtitle: Text("Дата: ${event.date.toLocal()}"),
                 );
               },
@@ -105,7 +105,8 @@ class _CalendarChatScreenState extends State<CalendarChatScreen> {
                   child: TextField(
                     controller: _controller,
                     decoration: InputDecoration(
-                      hintText: "Введите запрос (например, завтра в 3 дня тренировка)",
+                      hintText:
+                          "Введите запрос (например, завтра в 3 дня тренировка)",
                     ),
                   ),
                 ),
