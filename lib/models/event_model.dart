@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:groq/groq.dart';
 import 'dart:convert';
 
 class Event {
@@ -54,30 +53,8 @@ class CalendarChatScreen extends StatefulWidget {
 class _CalendarChatScreenState extends State<CalendarChatScreen> {
   final TextEditingController _controller = TextEditingController();
   final List<Event> _events = [];
-  final Groq _groq = Groq(
-    apiKey: const String.fromEnvironment('groqApiKey'),
-    model: "gemma-7b-it",
-  );
 
-  Future<void> _processUserInput(String userInput) async {
-    _groq.setCustomInstructionsWith(
-        "Ты помощник, который преобразует пользовательские запросы в события календаря. "
-            "Если время окончания не указано, предполагается, что событие длится 1 час. "
-            "Ответь в формате JSON, соответствующем структуре класса Event."
-    );
 
-    try {
-      GroqResponse response = await _groq.sendMessage(userInput);
-      final Map<String, dynamic> eventData = jsonDecode(response.choices.first.message.content);
-      Event newEvent = Event.fromJson(eventData);
-
-      setState(() {
-        _events.add(newEvent);
-      });
-    } catch (error) {
-      print("Ошибка: $error");
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +90,7 @@ class _CalendarChatScreenState extends State<CalendarChatScreen> {
                   icon: Icon(Icons.send),
                   onPressed: () {
                     if (_controller.text.isNotEmpty) {
-                      _processUserInput(_controller.text);
+                      _controller.text;
                       _controller.clear();
                     }
                   },
