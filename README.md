@@ -90,7 +90,7 @@ flutter run
 
 **Mentor: Tayapbergenova Anar Melisovna**
 
-##🏆 Recognition
+## 🏆 Recognition
 
 **Developed as part of the Infomatrix 2025 competition under the AI Programming category.**
 
